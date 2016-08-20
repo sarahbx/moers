@@ -26,6 +26,11 @@
 
 ************************************************************************************/
 
+if (PHP_VERSION_ID < 50500) {
+  // The password hash function is not available until 5.5.0, require it
+  throw new Exception('Must use PHP Version >= 5.5.0');
+}
+
 require_once 'include/nolicense_functions.php';
 require_once 'include/config.php';
 
@@ -465,9 +470,13 @@ function isValidUserPassword($funcUser, $funcPass)
   {
 	if ($info = mysql_fetch_array( $check ))
 	{
-	  if ($info['sha256_pass'] != "") // see if has the sha256 hashed password set
+	  if ($info['sha256_pass'] != "") // see if has the newer hashed password set
 	  {
-		if ($info['sha256_pass'] == bin2hex(mhash(MHASH_SHA256, $funcPass)))
+		if ($info['hashed_pass'] == bin2hex(mhash(MHASH_SHA256, $funcPass)))
+		{
+		  $ret = TRUE;
+		}
+		else if (password_verify($funcPass, $info['hashed_pass']))
 		{
 		  $ret = TRUE;
 		}
@@ -480,9 +489,9 @@ function isValidUserPassword($funcUser, $funcPass)
 	  {
 		if ($info['pass'] == md5($funcPass))
 		{
-		  // set sha256 hash before returning true
-		  $sha256_pass = bin2hex(mhash(MHASH_SHA256, $funcPass));
-		  $update_member = mysql_query("UPDATE users SET sha256_pass='$sha256_pass' WHERE username='$funcUser'");
+		  // set password hash before returning true
+		  $hashed_pass = password_hash($funcPass, PASSWORD_DEFAULT);
+		  $update_member = mysql_query("UPDATE users SET sha256_pass='$hashed_pass' WHERE username='$funcUser'");
 		  // clear md5 hash
 		  $update_member = mysql_query("UPDATE users SET pass='' WHERE username='$funcUser'");
 		  $ret = TRUE;
@@ -517,11 +526,13 @@ function setUserPassword($funcPass)
   {
 	if ($info = mysql_fetch_array( $check ))
 	{
-	  // set sha256 hash before returning true
-      $sha256_pass = bin2hex(mhash(MHASH_SHA256, $funcPass));
-      $update_member = mysql_query("UPDATE users SET sha256_pass='$sha256_pass' WHERE username='$funcUser'");
+	  // set password hash before returning true
+	  $hashed_pass = password_hash($funcPass, PASSWORD_DEFAULT);
+	  $update_member = mysql_query("UPDATE users SET sha256_pass='$hashed_pass' WHERE username='$funcUser'");
 	  // clear md5 hash
-	  $update_member = mysql_query("UPDATE users SET pass='' WHERE username='$funcUser'");
+	  if ($info['pass'] != '') {
+	    $update_member = mysql_query("UPDATE users SET pass='' WHERE username='$funcUser'");
+	  }
 	  return TRUE;
 	}
 	else
