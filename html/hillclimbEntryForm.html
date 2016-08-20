@@ -1,0 +1,74 @@
+﻿<script type="text/javascript">
+
+function bodyLoaded()
+{
+  var itemnumber = location.search;
+  itemnumber = itemnumber.substr(1);
+  document.getElementById("id_itemNumber").value = itemnumber;
+}
+
+</script>
+
+<form action="hillclimb_dataentry.php" method="POST">
+<input type="hidden" name="itemNumber" id="id_itemNumber" value="" />
+<input type="hidden" name="Event" value="2009 Spring Hillclimb" />
+Please fill out all fields as completely as possible.<br />
+<table class="default">
+<th>Driver Info:<input type="hidden" name="Driver Info" value="" /></th>
+<tr><td>Novice?</td><td><input type="radio" name="novice" value="yes" id="id_novice_yes">Yes <input type="radio" name="novice" value="no" id="id_novice_no">No</td></tr>
+<tr><td>Bringing workers (Age 16+) How many?</td><td><input type="text" name="workers" value="" id="id_workers"></td></tr>
+<tr><td>Name</td><td<input type="text" name="driverName" id="id_driverName"></td></tr>
+<tr><td>Age:</td><td><input type="text" name="driverAge" id="id_driverAge"></td></tr>
+<tr><td>D.O.B.</td><td><input type="text" name="driverDOB" id="id_driverDOB"></td></tr>
+<tr><td>Address</td><td><input type="text" name="driverAddress" id="id_driverAddress"></td></tr>
+<tr><td>City</td><td><input type="text" name="driverCity" id="id_driverCity"></td></tr>
+<tr><td>State</td><td><input type="text" name="driverState" id="id_driverState"></td></tr>
+<tr><td>ZIP</td><td><input type="text" name="driverZip" id="id_driverZip"></td></tr>
+<tr><td>Telephone</td><td><input type="text" name="driverTel" id="id_driverTel"></td></tr>
+<tr><td>Email</td><td><input type="text" name="driverEmail" id="id_driverEmail"></td></tr>
+<tr><td>Competition License Number: (Rally Car teams only)</td><td><input type="text" name="driverCompLicense" id="id_driverCompLicense"></td></tr>
+<tr><td>Sanctioning Body: (Rally Car teams only – chose one)</td><td><input type="radio" name="driverSanc" value="RA">Rally America <input type="radio" name="driverSanc" value="CARS">CARS <input type="radio" name="driverSanc" value="NASA">NASA <input type="radio" name="driverSanc" value="SCCA">SCCA</td></tr>
+<th>Navigator Information: (for Rally Car teams only)<input type="hidden" name="Navigator Info" value="" /></th>
+<tr><td>Name</td><td><input type="text" name="navigatorName" id="id_navigatorName"></td></tr>
+<tr><td>Age:</td><td><input type="text" name="navigatorAge" id="id_navigatorAge"></td></tr>
+<tr><td>D.O.B.</td><td><input type="text" name="navigatorDOB" id="id_navigatorDOB"></td></tr>
+<tr><td>Address</td><td><input type="text" name="navigatorAddress" id="id_navigatorAddress"></td></tr>
+<tr><td>City</td><td><input type="text" name="navigatorCity" id="id_navigatorCity"></td></tr>
+<tr><td>State</td><td><input type="text" name="navigatorState" id="id_navigatorState"></td></tr>
+<tr><td>ZIP</td><td><input type="text" name="navigatorZip" id="id_navigatorZip"></td></tr>
+<tr><td>Telephone</td><td><input type="text" name="navigatorTel" id="id_navigatorTel"></td></tr>
+<tr><td>Email</td><td><input type="text" name="navigatorEmail" id="id_navigatorEmail"></td></tr>
+<tr><td>Competition License Number: (Rally Car teams only)</td><td><input type="text" name="navigatorCompLicense" id="id_navigatorCompLicense"></td></tr>
+<tr><td>Sanctioning Body: (Rally Car teams only – chose one)</td><td><input type="radio" name="navigatorSanc" value="RA">Rally America <input type="radio" name="navigatorSanc" value="CARS">CARS <input type="radio" name="navigatorSanc" value="NASA">NASA <input type="radio" name="navigatorSanc" value="SCCA">SCCA</td></tr>
+<th>Emergency Contact Info:<input type="hidden" name="Emergency Info" value="" /></th>
+<tr><td>Name</td><td><input type="text" name="emergencyName" id="id_emergencyName"></td></tr>
+<tr><td>Relation</td><td><input type="text" name="emergencyRelation" id="id_emergencyRelation"></td></tr>
+<tr><td>Phone Number #1</td><td><input type="text" name="emergencyPhone1" id="id_emergencyPhone1"></td></tr>
+<tr><td>Phone Number #2</td><td><input type="text" name="emergencyPhone2" id="id_emergencyPhone2"></td><tr>
+<tr><td>Is this person at the event? (Choose one)</td><td><input type="radio" name="emergencyAtEvent" value="yes">Yes <input type="radio" name="emergencyAtEvent" value="no">No</td></tr>
+<th>Vehicle Specifics:<input type="hidden" name="Vehicle Info" value="" /></th>
+<tr><td>Vehicle Number</td><td<input type="text" name="vehicleNumber" id="id_vehicleNumber"></td></tr>
+<tr><td>Hillclimb Car Classification:</td><td>
+<input type="radio" name="class" value="U" id="id_class_U">U<input type="text" name="vehicleClassU" id="id_vehicleClassU"><br />
+<input type="radio" name="class" value="SP" id="id_class_U">SP<input type="text" name="vehicleClassSP" id="id_vehicleClassSP"><br />
+<input type="radio" name="class" value="P" id="id_class_U">P<input type="text" name="vehicleClassP" id="id_vehicleClassP"><br />
+<input type="radio" name="class" value="FL" id="id_class_U">Formula Libra<input type="text" name="vehicleClassFL" id="id_vehicleClassFL">
+</td></tr>
+<tr><td>Turbo? (Rally Car teams only)</td><td><input type="radio" name="turbo" value="yes" id="id_turbo_yes">Yes <input type="radio" name="turbo" value="no" id="id_turbo_no">No</td></tr>
+<tr><td>Year</td><td><input type="text" name="vehicleYear" id="id_vehicleYear"></td></tr>
+<tr><td>Make</td><td><input type="text" name="vehicleMake" id="id_vehicleMake"></td></tr>
+<tr><td>Model</td><td><input type="text" name="vehicleModel" id="id_vehicleModel"></td></tr>
+<tr><td>Color</td><td><input type="text" name="vehicleColor" id="id_vehicleColor"></td></tr>
+<tr><td>Weight</td><td><input type="text" name="vehicleWeight" id="id_vehicleWeight"></td></tr>
+<tr><td>Displacement</td><td><input type="text" name="vehicleDisplacement" id="id_vehicleDisplacement"></td></tr>
+<tr><td>Total Factor</td><td><input type="text" name="vehicleTotalFaactor" id="id_vehicleTotalFactor"></td></tr>
+<tr><td>Logbook Number (Rally Car teams only)</td><td><input type="text" name="vehicleLogbookNumber" id="id_vehicleLogbookNumber"></td></tr>
+<tr><td>Sanctioning Body: (Rally Car teams only – chose one)</td><td><input type="radio" name="vehicleSanc" value="RA">Rally America <input type="radio" name="navigatorSanc" value="CARS">CARS <input type="radio" name="navigatorSanc" value="NASA">NASA <input type="radio" name="navigatorSanc" value="SCCA">SCCA</td></tr>
+</table>
+<hr />
+Release / Waiver<br />
+I agree to abide by the rules and regulations of the New England Hillclimb Association and the Sports Car Club of New Hampshire and obey workers and officials. I understand that the decision of the Event Chairman is final. I understand that I am responsible for my safety and the terms of all releases required of participants at this event. I agree to be examined by medical personnel at any time and hereby give my permission to receive medical treatment or transport. In giving permission for my automobile to be used in this event, I understand that any risk, loss, or damages are the burden of the entrant(s), and I have knowledge of the event. I understand that failure to pass technical inspection or cancellation of the event (partial or complete) may not entitle me to any sort of refund.
+<hr />
+By clicking on 'Continue', you hereby agree to the terms of the release / waiver stated above.
+<input type="submit" name="submit" value="Continue" /> <input type="button" name="cancel" value="Cancel" onclick="parent.main_popupWindowCancel()" />
+</form>

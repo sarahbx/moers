@@ -1,0 +1,108 @@
+﻿<html>
+<head>
+</head>
+<body onload="bodyLoaded()">
+
+<script type="text/javascript">
+
+function optionChanged()
+{
+  var os0value = document.getElementById("os0").value;
+  if (os0value == "Regular Entry" || os0value == "Drift Entry")
+  {
+    document.getElementById("amount").value = "140.00";
+    document.getElementById("navigatorlunch").disabled=true;
+    document.getElementById("id_on2").disabled=true;
+    document.getElementById("navigatorlunch").value = "None";
+  }
+  else if (os0value == "Rally Entry")
+  {
+    document.getElementById("amount").value = "160.00";
+    document.getElementById("navigatorlunch").disabled=false;
+    document.getElementById("id_on2").disabled=false;
+  }
+  
+  lunchChanged();
+}
+
+function lunchChanged()
+{
+  var total = document.getElementById("amount").value;
+  var driverlunch = document.getElementById("driverlunch").value;
+  var navigatorlunch = document.getElementById("navigatorlunch").value;
+  
+  if (driverlunch == "Saturday" || driverlunch == "Sunday")
+  {
+    total = Number(total) + 5.00;
+  }
+  else if (driverlunch == "Saturday & Sunday")
+  {
+    total = Number(total) + 10.00;
+  }
+  else
+    total = Number(total);
+  
+  if (navigatorlunch == "Saturday" || navigatorlunch == "Sunday")
+  {
+    total += 5.00;
+  }
+  else if (navigatorlunch == "Saturday & Sunday")
+  {
+    total += 10.00;
+  }
+  total = total.toFixed(2);
+  document.getElementById("total").innerHTML = "$" + total.toString();
+  document.getElementById("amount").value = total.toString();
+}
+
+function bodyLoaded()
+{
+  var itemnumber = location.search;
+  itemnumber = itemnumber.substr(1);
+  document.getElementById("id_item_number").value = itemnumber;
+  optionChanged();
+}
+
+</script>
+
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post"  target="_top">
+<input type="hidden" name="cmd" value="_xclick">
+<input type="hidden" name="business" value="sccnh@xhub.com">
+<input type="hidden" name="item_name" value="2009 Spring Hillclimb">
+<input type="hidden" name="item_number" value="notSet" id="id_item_number" >
+<input type="hidden" name="amount" value="" id="amount">
+<input type="hidden" name="on0" value="Entry Type">
+<input type="hidden" name="on1" value="Driver Lunch">
+<input type="hidden" name="on2" value="Navigator Lunch" id="id_on2">
+<table>
+<tr><td>Entry Type: <select name="os0" id="os0" onchange="optionChanged()">
+	<option value="Regular Entry">Regular Entry $140.00
+	<option value="Rally Entry">Rally Entry $160.00
+	<option value="Drift Entry">Drift Entry $140.00
+</select> </td></tr>
+<tr><td>Driver Lunches<select name="os1" id="driverlunch" onchange="optionChanged()">
+  <option value="None">None
+  <option value="Saturday">Saturday Lunch $5.00
+  <option value="Sunday">Sunday Lunch $5.00
+  <option value="Saturday &amp Sunday">Saturday &amp; Sunday Lunch $10.00
+</select> </td></tr>
+<tr><td>Navigator Lunches<select name="os2" id="navigatorlunch" onchange="optionChanged()">
+  <option value="None">None
+  <option value="Saturday">Saturday Lunch $5.00
+  <option value="Sunday">Sunday Lunch $5.00
+  <option value="Saturday &amp Sunday">Saturday &amp; Sunday Lunch $10.00
+</select> </td></tr>
+<tr><td>Total: <span id="total"></span></td></tr>
+</table>
+<input type="hidden" name="no_shipping" value="1">
+<input type="hidden" name="return" value="https://secure.netsolhost.com/xhub.com/sccnh/main.php">
+<input type="hidden" name="cancel_return" value="https://secure.netsolhost.com/xhub.com/sccnh/main.php">
+<input type="hidden" name="no_note" value="1">
+<input type="hidden" name="currency_code" value="USD">
+<input type="image" src="https://www.paypal.com/en_US/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1"><br />
+<input type="button" name="cancel" value="Cancel" onclick="parent.main_popupWindowCancel()" />
+</form>
+
+</body>
+</html>

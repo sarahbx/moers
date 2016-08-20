@@ -1,0 +1,83 @@
+<!-- header.html
+/************************************************************************************
+    Copyright © 2008-2010 xhub.com
+
+    Sarah Bennert
+    sarah@xhub.com
+
+    This file is part of the Motorsports Online Event Registration System (MOERS).
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+    Any system sensitive data such as IP addresses, usernames, and passwords 
+    must be removed from this file before distribution.
+
+************************************************************************************/
+-->
+
+  <!-- IE7 Compatibility Mode // IE9 cannot cope. Need to investigate further -->
+  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+
+  <link rel="SHORTCUT ICON" type="image/x-icon" href="favicon.ico">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <link rel="StyleSheet" href="style.css" type="text/css" media="screen">
+
+  <script language="javascript" type="text/javascript" src="js/getElementById.js"></script>
+  <script language="javascript" type="text/javascript" src="js/functions.js"></script>
+  <script language="javascript" type="text/javascript" src="js/main.js"></script>
+
+  <script language="javascript" type="text/javascript">
+  forceSSL();
+  </script>
+</head>
+<body>
+
+<div class="class_popup" id="div_popup">
+  <iframe class="class_iframe_popup" id="iframe_popup" src="blank.html"></iframe>
+</div>
+
+<div class="class_popup_close" id="div_popup_close">
+  <img src="images/classy-icons-set/png/32x32/delete.png" border="0" onclick="main_popupWindowCancel()" id="img_popup_close" />
+</div>
+
+<div class="class_popup_back" id="div_popup_back">
+  <img src="images/classy-icons-set/png/32x32/previous.png" border="0" id="img_popup_back" />
+</div>
+
+<div class="class_loading" id="div_loading">
+  <img src="images/ajax-loader.gif" border="0" id="img_loading" />
+</div>
+
+<div class="class_fullscreen" id="div_fullscreen"></div>
+
+<div class="class_copyright" id="div_copyright">
+  <a href="#" onclick="main_openPopupWindow('about.php')">moers</a> Copyright &copy 2008-2010 <a target="_blank" href="http://www.xhub.com">xhub.com</a><br />
+  Icons by <a href="http://dryicons.com" target="_blank">http://dryicons.com</a><br />
+</div>
+
+<div class="class_rackspace" id="id_rackspace">
+  <a href="http://www.rackspacecloud.com/774.html" target="_blank" style="text-decoration:none;  font-family:Arial, Helvetica, sans-serif; font-size:12px;  text-align: center; display: block;">
+  <img alt="Cloud Computing" src="images/the-rackspace-cloud-dark-125-wide.png" border="0"/>
+  <br />Cloud Computing</a>
+</div>
+
+<!-- CONTENT_DIV -->
+<div class="class_content" id="div_content">
+
+<!-- HEAD_0 DIV -->
+  <div class="class_head_0" id="div_head_0">
+    <a href="http://www.sccnh.org" target="_blank"><img src="images/SCCNH_new_logo_750x90.png" id="img_headLogo" border="0" /></a>
+    <br />
+  </div>
+<!-- END HEAD_0 DIV -->
